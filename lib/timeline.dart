@@ -1,9 +1,10 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:timeline_list/timeline.dart';
 import 'package:timeline_list/timeline_model.dart';
 
-import 'data.dart';
+import 'time_line_data.dart';
 
 class TimelinePage extends StatefulWidget {
   TimelinePage({Key key}) : super(key: key);
@@ -16,11 +17,13 @@ class _TimelinePageState extends State<TimelinePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey[50],
       body: timelineModel(TimelinePosition.Left),
     );
   }
 
   timelineModel(TimelinePosition position) => Timeline.builder(
+      lineColor: Colors.grey,
       itemBuilder: centerTimelineBuilder,
       itemCount: meetings.length,
       physics: position == TimelinePosition.Left
@@ -33,6 +36,7 @@ class _TimelinePageState extends State<TimelinePage> {
     final textTheme = Theme.of(context).textTheme;
     return TimelineModel(
         Card(
+          color: Colors.blueGrey[100],
           margin: EdgeInsets.symmetric(vertical: 8.0),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
@@ -43,10 +47,10 @@ class _TimelinePageState extends State<TimelinePage> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 SizedBox(
-                    height: 150.0,
+                    height: 200.0,
                     width: 300.0,
                     child: Carousel(
-                        boxFit: BoxFit.fill,
+                        boxFit: BoxFit.cover,
                         images: [
                           AssetImage(meeting.images[0]),
                           ExactAssetImage(meeting.images[1]),

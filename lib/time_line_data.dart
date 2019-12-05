@@ -30,32 +30,32 @@ const List<Meeting> meetings = [
         color: Colors.white,
         size: 32.0,
       ),
-      iconBackground: Colors.red),
+      iconBackground: Colors.blueGrey),
+  Meeting(
+      name: "Online Meeting",
+      time: "2019 - 11 - 20",
+      images: [
+        "images/OnlineMeeting/0.png",
+        "images/OnlineMeeting/1.png",
+        "images/OnlineMeeting/2.png"
+      ],
+      icon: Icon(
+        Icons.videocam,
+        color: Colors.white,
+      ),
+      iconBackground: Colors.blueGrey),
   Meeting(
       name: "Our First Meeting",
       time: "2019 - 11 - 1",
       images: [
-        "images/FirstMeeting/0.jpeg",
-        "images/FirstMeeting/1.jpeg",
-        "images/FirstMeeting/2.jpeg"
-      ],
-      icon: Icon(
-        Icons.people,
-        color: Colors.white,
-      ),
-      iconBackground: Colors.teal),
-  Meeting(
-      name: "General Meeting",
-      time: "2019 - 9 - 1",
-      images: [
-        "images/GeneralMeeting/0.jpeg",
-        "images/GeneralMeeting/1.jpeg",
-        "images/GeneralMeeting/2.jpeg",
+        "images/FirstMeeting/0.jpg",
+        "images/FirstMeeting/1.jpg",
+        "images/FirstMeeting/2.jpg"
       ],
       icon: Icon(
         Icons.room,
         color: Colors.white,
         size: 32.0,
       ),
-      iconBackground: Colors.blue),
+      iconBackground: Colors.blueGrey),
 ];

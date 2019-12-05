@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:msp_mob_dev/memberDetails.dart';
+import 'package:msp_mob_dev/profileUi.dart';
 
 class MembersList extends StatefulWidget {
   List<Map> members;
@@ -12,26 +12,28 @@ class _MembersListState extends State<MembersList> {
   Map current_member;
   @override
   Widget build(BuildContext context) {
-    return new ListView.builder(
-      scrollDirection: Axis.vertical,
-      itemCount: widget.members.length,
-      itemBuilder: (context, index) {
-        current_member = widget.members[index];
-        return creat_card();
-        ;
-      },
+    return Container(
+      color: Colors.blueGrey[50],
+      child: new ListView.builder(
+        scrollDirection: Axis.vertical,
+        itemCount: widget.members.length,
+        itemBuilder: (context, index) {
+          current_member = widget.members[index];
+          return creat_card(index);
+        },
+      ),
     );
   }
 
-  Widget creat_card() {
-    return FlatButton(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Material(
-          color: Colors.blueGrey[50],
-          elevation: 4,
-          borderRadius: BorderRadius.circular(24.0),
-          shadowColor: Color(0x802196F3),
+  Widget creat_card(int index) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Material(
+        color: Colors.blueGrey[100],
+        elevation: 3,
+        borderRadius: BorderRadius.circular(24.0),
+        shadowColor: Color(0x802196F3),
+        child: FlatButton(
           child: Row(
             children: <Widget>[
               Padding(
@@ -39,7 +41,7 @@ class _MembersListState extends State<MembersList> {
                 child: Container(
                   child: CircleAvatar(
                     radius: 40.0,
-                    backgroundColor: Colors.blueGrey[400],
+                    backgroundColor: Colors.blueGrey[500],
                     backgroundImage:
                         AssetImage('images/${current_member['image']}.jpg'),
                   ),
@@ -73,18 +75,18 @@ class _MembersListState extends State<MembersList> {
               ),
             ],
           ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProfileUi(
+                  member_details: widget.members[index],
+                ),
+              ),
+            );
+          },
         ),
       ),
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => memberDetails(
-              member_details: current_member,
-            ),
-          ),
-        );
-      },
     );
   }
 }

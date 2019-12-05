@@ -159,6 +159,7 @@ class _msp_mob_devState extends State<msp_mob_dev>
               backgroundColor: Colors.blueGrey[900],
               forceElevated: boxIsScrolled,
               bottom: TabBar(
+                unselectedLabelColor: Colors.blueGrey[500],
                 tabs: <Widget>[
                   Tab(
                     icon: Icon(Icons.people_outline),

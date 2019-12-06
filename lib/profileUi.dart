@@ -37,7 +37,6 @@ class _ProfileUiState extends State<ProfileUi> {
     super.dispose();
   }
 
-
   Widget build(BuildContext context) {
     final Color color1 = Colors.blueGrey[900];
     final Color color2 = Colors.blueGrey[200];
@@ -50,7 +49,7 @@ class _ProfileUiState extends State<ProfileUi> {
             height: 360,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
-                     bottomLeft: Radius.circular(50.0),
+                    bottomLeft: Radius.circular(50.0),
                     bottomRight: Radius.circular(50.0)),
                 gradient: LinearGradient(
                     colors: [color1, color2],

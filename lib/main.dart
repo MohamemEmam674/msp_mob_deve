@@ -151,7 +151,7 @@ class _msp_mob_devState extends State<msp_mob_dev>
             SliverAppBar(
               leading: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Image.asset('images/msplogo.png'),
+                child: Image.asset('images/msplogo.jpg'),
               ),
               title: Text('MSP Mobile Developers'),
               pinned: true,

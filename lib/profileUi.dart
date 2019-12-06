@@ -1,3 +1,4 @@
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
@@ -11,6 +12,32 @@ class ProfileUi extends StatefulWidget {
 
 class _ProfileUiState extends State<ProfileUi> {
   @override
+  ConfettiController _controllerCenterRight;
+  ConfettiController _controllerCenterLeft;
+  ConfettiController _controllerTopCenter;
+  ConfettiController _controllerBottonCenter;
+
+  @override
+  void initState() {
+    _controllerCenterRight =
+        ConfettiController(duration: Duration(seconds: 10));
+    _controllerCenterLeft = ConfettiController(duration: Duration(seconds: 10));
+    _controllerTopCenter = ConfettiController(duration: Duration(seconds: 10));
+    _controllerBottonCenter =
+        ConfettiController(duration: Duration(seconds: 10));
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controllerCenterRight.dispose();
+    _controllerCenterLeft.dispose();
+    _controllerTopCenter.dispose();
+    _controllerBottonCenter.dispose();
+    super.dispose();
+  }
+
+
   Widget build(BuildContext context) {
     final Color color1 = Colors.blueGrey[900];
     final Color color2 = Colors.blueGrey[200];
@@ -35,7 +62,11 @@ class _ProfileUiState extends State<ProfileUi> {
             elevation: 0,
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  Navigator.pop(context);
+                });
+              },
             ),
             actions: <Widget>[],
             title: new Text(
@@ -119,37 +150,55 @@ class _ProfileUiState extends State<ProfileUi> {
                   child: Container(),
                 ),
                 Expanded(
-                  flex: 5,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 5.0, horizontal: 16.0),
-                    margin: const EdgeInsets.only(
-                        top: 30, left: 20.0, right: 20.0, bottom: 20.0),
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [color1, color2],
+                  flex: 8,
+                  child: Stack(
+                    children: <Widget>[
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5.0, horizontal: 16.0),
+                        margin: const EdgeInsets.only(
+                            top: 30, left: 20.0, right: 20.0, bottom: 20.0),
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [color1, color2],
+                            ),
+                            borderRadius: BorderRadius.circular(30.0)),
+                        child: Row(
+                          children: <Widget>[
+                            IconButton(
+                              alignment: Alignment.centerRight,
+                              color: Colors.blueGrey[100],
+                              icon: Icon(Icons.lightbulb_outline),
+                              onPressed: () {
+                                open_dialog('advice');
+                              },
+                            ),
+                            Spacer(),
+                            IconButton(
+                              color: Colors.blueGrey[800],
+                              icon: Icon(Icons.feedback),
+                              onPressed: () {
+                                open_dialog('feedback');
+                              },
+                            ),
+                          ],
                         ),
-                        borderRadius: BorderRadius.circular(30.0)),
-                    child: Row(
-                      children: <Widget>[
-                        IconButton(
-                          alignment: Alignment.centerRight,
-                          color: Colors.blueGrey[100],
-                          icon: Icon(Icons.lightbulb_outline),
+                      ),
+                      Center(
+                        child: FloatingActionButton(
+                          child: Icon(
+                            Icons.lightbulb_outline,
+                            color: Colors.pink,
+                          ),
+                          backgroundColor: Colors.white,
                           onPressed: () {
-                            open_dialog('advice');
+                            setState(() {
+                              _controllerTopCenter.play();
+                            });
                           },
                         ),
-                        Spacer(),
-                        IconButton(
-                          color: Colors.blueGrey[800],
-                          icon: Icon(Icons.feedback),
-                          onPressed: () {
-                            open_dialog('feedback');
-                          },
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ],

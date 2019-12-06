@@ -26,6 +26,8 @@ dependencies:
   timeline: 0.0.1
   timeline_list: ^0.0.3
   carousel_pro: ^1.0.0
+  material_design_icons_flutter: ^3.4.4595
+  confetti: ^0.3.0
 
 dev_dependencies:
   flutter_test:
